@@ -1,3 +1,16 @@
+## Introduction
+
+> A note-taking application
+> Backend: Java (Quarkus JDK 21)
+> Frontend: React (Next.js, Tailwind CSS)
+
+> To use, switch to the `pro` branch. Deployment and development steps are provided.
+
+## Future Plans
+
+- [ ] Integrate AI for article continuation
+- [ ] Integrate AI for article recommendations
+
 ## server
 
 > language:java,go,python;
@@ -42,10 +55,10 @@ openssl pkcs8 -topk8 -nocrypt -inform pem -in rsaPrivateKey.pem -outform pem -ou
 #### Development tools
 
 | ---                      | ---                                                     |
-|--------------------------|---------------------------------------------------------|
-| Code editor              | neovim（v0.10.0）                                         |
+| ------------------------ | ------------------------------------------------------- |
+| Code editor              | neovim（v0.10.0）                                       |
 | ------------------------ | ------------------------------                          |
-| Browser                  | Chrome（126.0.6478.126）                                  |
+| Browser                  | Chrome（126.0.6478.126）                                |
 | ------------------------ | ------------------------------                          |
 | Database connection tool | DataGrip(Not recommended, the experience is very poor.) |
 | ------------------------ | ------------------------------                          |
@@ -53,7 +66,7 @@ openssl pkcs8 -topk8 -nocrypt -inform pem -in rsaPrivateKey.pem -outform pem -ou
 ##### Other tools
 
 | ---                      | ---                            |
-|--------------------------|--------------------------------|
+| ------------------------ | ------------------------------ |
 | sdkman                   | manger jdk version             |
 | ------------------------ | ------------------------------ |
 
