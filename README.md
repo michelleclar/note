@@ -1,5 +1,6 @@
 ## Introduction
 
+> 我是一个编程新手，做这个主要是为了记录学习笔记
 > A note-taking application
 > Backend: Java (Quarkus JDK 21)
 > Frontend: React (Next.js, Tailwind CSS)
@@ -10,6 +11,11 @@
 
 - [ ] Integrate AI for article continuation
 - [ ] Integrate AI for article recommendations
+
+## About Me
+
+> I am a programming beginner. I created this project mainly to record my study notes. It's evident that my English is
+> not very good, so I plan to use English comments throughout the project to improve my English skills.
 
 ## server
 
@@ -55,10 +61,10 @@ openssl pkcs8 -topk8 -nocrypt -inform pem -in rsaPrivateKey.pem -outform pem -ou
 #### Development tools
 
 | ---                      | ---                                                     |
-| ------------------------ | ------------------------------------------------------- |
-| Code editor              | neovim（v0.10.0）                                       |
+|--------------------------|---------------------------------------------------------|
+| Code editor              | neovim（v0.10.0）                                         |
 | ------------------------ | ------------------------------                          |
-| Browser                  | Chrome（126.0.6478.126）                                |
+| Browser                  | Chrome（126.0.6478.126）                                  |
 | ------------------------ | ------------------------------                          |
 | Database connection tool | DataGrip(Not recommended, the experience is very poor.) |
 | ------------------------ | ------------------------------                          |
@@ -66,7 +72,7 @@ openssl pkcs8 -topk8 -nocrypt -inform pem -in rsaPrivateKey.pem -outform pem -ou
 ##### Other tools
 
 | ---                      | ---                            |
-| ------------------------ | ------------------------------ |
+|--------------------------|--------------------------------|
 | sdkman                   | manger jdk version             |
 | ------------------------ | ------------------------------ |
 
