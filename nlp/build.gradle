@@ -1,0 +1,8 @@
+dependencies {
+    implementation libs.hanlp
+    implementation libs.commons
+    testImplementation libs.quarkusJunit5
+}
+test {
+    systemProperty 'java.util.logging.manager', 'org.jboss.logmanager.LogManager'
+}
