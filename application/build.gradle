@@ -10,7 +10,6 @@ dependencies {
     implementation libs.jooq
     implementation libs.bundles.quarkus
     implementation libs.bundles.auth
-    implementation libs.bundles.postgresql
     implementation libs.quarkusSmallryeOpenapi
     implementation libs.slf4jJbossLogmanager
     implementation libs.dbHealth
