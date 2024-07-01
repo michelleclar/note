@@ -34,3 +34,14 @@ comment on column documents.created_at is 'Creation timestamp';
 
 comment on column documents.updated_at is 'Update timestamp';
 
+create table user_documents
+(
+    user_id     integer not null,
+    document_id integer not null,
+    primary key (user_id, document_id)
+);
+
+comment on column user_documents.user_id is 'User ID';
+
+comment on column user_documents.document_id is 'Document ID';
+
