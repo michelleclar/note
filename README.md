@@ -5,6 +5,7 @@
 > Frontend: React (Next.js, Tailwind CSS)
 
 > To use, switch to the `pro` branch. Deployment and development steps are provided.
+> This project's frontend code is referenced from https://www.youtube.com/watch?v=0OaDyjB9Ib8.
 
 ## Future Plans
 
