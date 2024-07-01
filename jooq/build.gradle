@@ -4,7 +4,6 @@ plugins {
     id 'org.kordamp.gradle.jandex'
 }
 dependencies {
-    implementation enforcedPlatform(libs.quarkusPlaform)
     implementation libs.jooq
     implementation libs.quarkusJdbcPostgreSQL
     implementation libs.bundles.jooqGen
