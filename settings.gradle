@@ -11,7 +11,7 @@ pluginManagement {
         mavenLocal()
     }
     plugins {
-        id 'io.quarkus' version '3.11.1'
+        id 'io.quarkus' version '3.11.3'
         id 'org.kordamp.gradle.jandex' version '1.1.0'
     }
 }
@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     versionCatalogs {
         libs {
             // versions
-            version('quarkus', '3.11.1')
+            version('quarkus', '3.11.3')
             version('jooq', '3.18.7')
             version('jooqQuarkiverse', '2.0.1')
             version('slf4j-jboss-logmanager', '2.0.1.Final')

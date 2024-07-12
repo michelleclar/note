@@ -13,8 +13,9 @@ import jakarta.ws.rs.core.NewCookie;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriBuilder;
 import org.carl.commons.Fields;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.config.ConfigProvider;
 
+import java.net.URI;
 import java.util.Date;
 
 @Path("/oauth")
@@ -22,10 +23,8 @@ public class AuthResource {
 
     @Inject
     AuthService authService;
-    @ConfigProperty(name = "web.host")
-    String host;
-    @ConfigProperty(name = "web.port")
-    Integer port;
+    URI webUri = URI.create(ConfigProvider.getConfig().getValue("quarkus.http.cors.origins", String.class));
+
 
     @GET
     @Path("github")
@@ -35,14 +34,14 @@ public class AuthResource {
         return Uni.createFrom().nullItem().onItem().transform(i -> {
             String uuid = authService.github(request, code);
             if (uuid == null) {
-                return Response.seeOther(UriBuilder.fromUri("/").host(host).port(port).build())
+                return Response.seeOther(UriBuilder.fromUri("/").host(webUri.getHost()).port(webUri.getPort()).build())
                         .build();
             }
             NewCookie _cookie = new NewCookie.Builder(Fields.CODE).value(uuid).path("/")
                     .domain("localhost").maxAge(60 * 5).expiry(new Date(System.currentTimeMillis() + 30000))
                     .sameSite(NewCookie.SameSite.NONE).httpOnly(true).secure(true).build();
             return Response
-                    .seeOther(UriBuilder.fromUri("/documents").host(host).port(port).build())
+                    .seeOther(UriBuilder.fromUri("/documents").host(webUri.getHost()).port(webUri.getPort()).build())
                     .cookie(_cookie).build();
         });
     }
