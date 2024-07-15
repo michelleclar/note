@@ -1,6 +1,5 @@
 package org.carl.user;
 
-import io.netty.util.internal.ObjectUtil;
 import io.quarkus.cache.Cache;
 import io.quarkus.cache.CacheName;
 import io.quarkus.runtime.StartupEvent;
@@ -16,7 +15,6 @@ import jakarta.ws.rs.ServerErrorException;
 
 import java.time.Duration;
 
-import org.carl.auth.exception.TokenExpiration;
 import org.carl.auth.utils.JwtUtils;
 import org.carl.cache.CacheFields;
 import org.carl.cache.CacheUtils;
@@ -34,7 +32,6 @@ import org.carl.user.model.Role;
 import org.carl.user.model.User;
 import org.jboss.logging.Logger;
 
-import javax.security.sasl.AuthenticationException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

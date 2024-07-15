@@ -13,9 +13,7 @@ import jakarta.ws.rs.core.NewCookie;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriBuilder;
 import org.carl.commons.Fields;
-import org.eclipse.microprofile.config.ConfigProvider;
 
-import java.net.URI;
 import java.util.Date;
 
 @Path("/oauth")
