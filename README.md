@@ -10,6 +10,17 @@
 
 > Need JDK 21
 > Modify db config
+> For sensitive configurations, you can create a .env file in the project directory. Refer to this link for configuration details: https://quarkus.io/guides/config.
+
+```
+-- Currently required configurations for development.
+QUARKUS_DATASOURCE_JDBC_URL=
+QUARKUS_DATASOURCE_USERNAME=
+QUARKUS_DATASOURCE_PASSWORD=
+QUARKUS_MAILER_USERNAME=
+QUARKUS_MAILER_PASSWORD=
+QUARKUS_MAILER_FROM=
+```
 
 ```sh
 openssl genrsa -out rsaPrivateKey.pem 2048
