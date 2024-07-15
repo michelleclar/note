@@ -11,11 +11,6 @@
 - [ ] Integrate AI for article continuation
 - [ ] Integrate AI for article recommendations
 
-## About Me
-
-> I am a programming beginner. I created this project mainly to record my study notes. It's evident that my English is
-> not very good, so I plan to use English comments throughout the project to improve my English skills.
-
 ## server
 
 > language:java,go,python;
@@ -60,16 +55,20 @@ openssl pkcs8 -topk8 -nocrypt -inform pem -in rsaPrivateKey.pem -outform pem -ou
 #### Development tools
 
 | ---                      | ---                                                     |
-|--------------------------|---------------------------------------------------------|
-| Code editor              | neovim（v0.10.0）                                         |
-| Browser                  | Chrome（126.0.6478.126）                                  |
+| ------------------------ | ------------------------------------------------------- |
+| Code editor              | neovim（v0.10.0）                                       |
+| ------------------------ | ------------------------------                          |
+| Browser                  | Chrome（126.0.6478.126）                                |
+| ------------------------ | ------------------------------                          |
 | Database connection tool | DataGrip(Not recommended, the experience is very poor.) |
+| ------------------------ | ------------------------------                          |
 
 ##### Other tools
 
 | ---                      | ---                            |
-|--------------------------|--------------------------------|
+| ------------------------ | ------------------------------ |
 | sdkman                   | manger jdk version             |
+| ------------------------ | ------------------------------ |
 
 ---
 
