@@ -1,5 +1,9 @@
 package org.carl.commons;
 
+import org.eclipse.microprofile.config.ConfigProvider;
+
+import java.net.URI;
+
 public class Fields {
 
 
@@ -30,5 +34,6 @@ public class Fields {
     public static final String USERINFO = "userinfo";
     public static final String UUID = "uuid";
     public static final String REFRESH_TOKEN = "refreshToken";
-    public static final String AUTHORIZATION = "authorization";
+    public static final String AUTHORIZATION = "Authorization";
+    public static final URI WEB_URI = URI.create(ConfigProvider.getConfig().getValue("quarkus.http.cors.origins", String.class));
 }

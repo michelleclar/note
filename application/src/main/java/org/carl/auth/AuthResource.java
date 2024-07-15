@@ -23,7 +23,6 @@ public class AuthResource {
 
     @Inject
     AuthService authService;
-    URI webUri = URI.create(ConfigProvider.getConfig().getValue("quarkus.http.cors.origins", String.class));
 
 
     @GET
@@ -34,14 +33,14 @@ public class AuthResource {
         return Uni.createFrom().nullItem().onItem().transform(i -> {
             String uuid = authService.github(request, code);
             if (uuid == null) {
-                return Response.seeOther(UriBuilder.fromUri("/").host(webUri.getHost()).port(webUri.getPort()).build())
+                return Response.seeOther(UriBuilder.fromUri("/").host(Fields.WEB_URI.getHost()).port(Fields.WEB_URI.getPort()).build())
                         .build();
             }
             NewCookie _cookie = new NewCookie.Builder(Fields.CODE).value(uuid).path("/")
                     .domain("localhost").maxAge(60 * 5).expiry(new Date(System.currentTimeMillis() + 30000))
                     .sameSite(NewCookie.SameSite.NONE).httpOnly(true).secure(true).build();
             return Response
-                    .seeOther(UriBuilder.fromUri("/documents").host(webUri.getHost()).port(webUri.getPort()).build())
+                    .seeOther(UriBuilder.fromUri("/documents").host(Fields.WEB_URI.getHost()).port(Fields.WEB_URI.getPort()).build())
                     .cookie(_cookie).build();
         });
     }

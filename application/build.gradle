@@ -16,6 +16,8 @@ dependencies {
     implementation libs.cache
     implementation libs.rest.client.jackson
     implementation libs.rest.client
+    implementation libs.smtp
+    implementation libs.valid
 }
 
 def mySrcDir = 'src/main/java'

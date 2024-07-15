@@ -10,6 +10,12 @@
 
 ### Development Deficiencies
 
-- [ ] refreshToken should be generated during manual login; a new refreshToken should be generated each time a user logs in.
+- [ ] refreshToken should be generated during manual login; a new refreshToken should be generated each time a user logs
+  in.
 - [ ] Need to introduce caching middleware or store tokens in the database; currently stored only in memory.
 - [ ] Security issues during login need further optimization; current focus is on implementing functionality.
+
+### 开发记录
+
+> Modify the permission logic: using JWT will only involve create, update, read, and some delete functionalities. For
+> critical permissions such as deactivating accounts or deleting everything, email verification is required.
