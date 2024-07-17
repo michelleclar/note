@@ -90,8 +90,9 @@ public class UserResource {
     @PermitAll
     @Produces(MediaType.APPLICATION_JSON)
     public Uni<RestResponse<JwtUtils.JwtPojo>> refreshToken(@Context HttpServerRequest request) {
-        String refreshToken = request.getHeader(Fields.AUTHORIZATION);
-        return userService.refreshToken(refreshToken).onItem()
+        String accessToken = request.getHeader(Fields.AUTHORIZATION);
+        String refreshToken = request.getHeader(Fields.REFRESH_TOKEN);
+        return userService.refreshToken(refreshToken,accessToken).onItem()
             .transform(Unchecked.function(item -> RestResponse.ResponseBuilder.ok(item)
                 .type(MediaType.APPLICATION_JSON)
                 .build()));

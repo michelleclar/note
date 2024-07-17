@@ -11,7 +11,7 @@ pluginManagement {
         mavenLocal()
     }
     plugins {
-        id 'io.quarkus' version '3.11.1'
+        id 'io.quarkus' version '3.11.3'
         id 'org.kordamp.gradle.jandex' version '1.1.0'
     }
 }
@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     versionCatalogs {
         libs {
             // versions
-            version('quarkus', '3.11.1')
+            version('quarkus', '3.11.3')
             version('jooq', '3.18.7')
             version('jooqQuarkiverse', '2.0.1')
             version('slf4j-jboss-logmanager', '2.0.1.Final')
@@ -73,7 +73,7 @@ dependencyResolutionManagement {
 
             // NOTE:jooq
 //            library('jooq', 'org.jooq', 'jooq').versionRef('jooq')
-             library('jooq', 'io.quarkiverse.jooq', 'quarkus-jooq').versionRef('jooqQuarkiverse')
+            library('jooq', 'io.quarkiverse.jooq', 'quarkus-jooq').versionRef('jooqQuarkiverse')
             library('jooqMeta', 'org.jooq', 'jooq-meta').versionRef('jooq')
             library('jooqCodegen', 'org.jooq', 'jooq-codegen').versionRef('jooq')
 
@@ -96,6 +96,12 @@ dependencyResolutionManagement {
             library('jwtBuild', 'io.quarkus', 'quarkus-smallrye-jwt-build').versionRef('quarkus')
             //NOTE:NLP
             library('hanlp', 'com.hankcs', 'hanlp').versionRef('hanlp')
+            // NOTE:SMTP
+            library('smtp', 'io.quarkus', 'quarkus-mailer').versionRef('quarkus')
+
+            // NOTE: valid
+            library('valid', 'io.quarkus', 'quarkus-hibernate-validator').versionRef('quarkus')
+
             // NOTE:bundles
             bundle('quarkus', ['quarkusJackson', 'quarkusArc', 'quarkusJunit5'])
 

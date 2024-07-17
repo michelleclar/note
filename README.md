@@ -1,11 +1,11 @@
 ## Introduction
 
+> 我是一个编程新手，做这个主要是为了记录学习笔记
 > A note-taking application
 > Backend: Java (Quarkus JDK 21)
 > Frontend: React (Next.js, Tailwind CSS)
 
 > To use, switch to the `pro` branch. Deployment and development steps are provided.
-> This project's frontend code is referenced from https://www.youtube.com/watch?v=0OaDyjB9Ib8.
 
 ## Future Plans
 
@@ -63,14 +63,18 @@ openssl pkcs8 -topk8 -nocrypt -inform pem -in rsaPrivateKey.pem -outform pem -ou
 | ---                      | ---                                                     |
 |--------------------------|---------------------------------------------------------|
 | Code editor              | neovim（v0.10.0）                                         |
+| ------------------------ | ------------------------------                          |
 | Browser                  | Chrome（126.0.6478.126）                                  |
+| ------------------------ | ------------------------------                          |
 | Database connection tool | DataGrip(Not recommended, the experience is very poor.) |
+| ------------------------ | ------------------------------                          |
 
 ##### Other tools
 
 | ---                      | ---                            |
 |--------------------------|--------------------------------|
 | sdkman                   | manger jdk version             |
+| ------------------------ | ------------------------------ |
 
 ---
 
