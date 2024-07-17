@@ -1,17 +1,3 @@
-## Introduction
-
-> A note-taking application
-> Backend: Java (Quarkus JDK 21)
-> Frontend: React (Next.js, Tailwind CSS)
-
-> To use, switch to the `pro` branch. Deployment and development steps are provided.
-
-## Future Plans
-
-- [ ] Integrate vector database for article text similarity search
-- [ ] Integrate AI for article continuation
-- [ ] Integrate AI for article recommendations
-
 ## server
 
 > language:java,go,python;
@@ -24,6 +10,17 @@
 
 > Need JDK 21
 > Modify db config
+> For sensitive configurations, you can create a .env file in the project directory. Refer to this link for configuration details: https://quarkus.io/guides/config.
+
+```
+-- Currently required configurations for development.
+QUARKUS_DATASOURCE_JDBC_URL=
+QUARKUS_DATASOURCE_USERNAME=
+QUARKUS_DATASOURCE_PASSWORD=
+QUARKUS_MAILER_USERNAME=
+QUARKUS_MAILER_PASSWORD=
+QUARKUS_MAILER_FROM=
+```
 
 ```sh
 openssl genrsa -out rsaPrivateKey.pem 2048
@@ -58,18 +55,14 @@ openssl pkcs8 -topk8 -nocrypt -inform pem -in rsaPrivateKey.pem -outform pem -ou
 | ---                      | ---                                                     |
 | ------------------------ | ------------------------------------------------------- |
 | Code editor              | neovim（v0.10.0）                                       |
-| ------------------------ | ------------------------------                          |
 | Browser                  | Chrome（126.0.6478.126）                                |
-| ------------------------ | ------------------------------                          |
 | Database connection tool | DataGrip(Not recommended, the experience is very poor.) |
-| ------------------------ | ------------------------------                          |
 
 ##### Other tools
 
-| ---                      | ---                            |
-| ------------------------ | ------------------------------ |
-| sdkman                   | manger jdk version             |
-| ------------------------ | ------------------------------ |
+| ---    | ---                |
+| ------ | ------------------ |
+| sdkman | manger jdk version |
 
 ---
 
