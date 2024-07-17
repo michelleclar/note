@@ -1,6 +1,5 @@
 ## Introduction
 
-> 我是一个编程新手，做这个主要是为了记录学习笔记
 > A note-taking application
 > Backend: Java (Quarkus JDK 21)
 > Frontend: React (Next.js, Tailwind CSS)
