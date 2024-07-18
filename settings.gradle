@@ -131,3 +131,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = 'note'
 include 'application', 'jooq', 'nlp', 'smtp'
+include 'vector'
+
