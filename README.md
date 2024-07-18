@@ -21,23 +21,9 @@
 
 > language:java,go,python;
 
-> frameworks: Quarkus
+> frameworks: Quarkus,React
 
 ---
-
-## Development
-
-> Need JDK 21
-> Modify db config
-
-```sh
-openssl genrsa -out rsaPrivateKey.pem 2048
-openssl rsa -pubout -in rsaPrivateKey.pem -out publicKey.pem
-
-openssl pkcs8 -topk8 -nocrypt -inform pem -in rsaPrivateKey.pem -outform pem -out privateKey.pem
-## Currently, the services have not been split. There are plans to separate the authorization service in the future.
-./gradlew quarkusDev
-```
 
 ### Environmental references
 
@@ -61,38 +47,13 @@ openssl pkcs8 -topk8 -nocrypt -inform pem -in rsaPrivateKey.pem -outform pem -ou
 #### Development tools
 
 | ---                      | ---                                                     |
-|--------------------------|---------------------------------------------------------|
-| Code editor              | neovim（v0.10.0）                                         |
-| Browser                  | Chrome（126.0.6478.126）                                  |
+| ------------------------ | ------------------------------------------------------- |
+| Code editor              | neovim（v0.10.0）                                       |
+| Browser                  | Chrome（126.0.6478.126）                                |
 | Database connection tool | DataGrip(Not recommended, the experience is very poor.) |
 
 ##### Other tools
 
-| ---                      | ---                            |
-|--------------------------|--------------------------------|
-| sdkman                   | manger jdk version             |
-
----
-
-### Options
-
-```sh
-## Options 1
-sdk install quarkus
-## Options 2
-yay -S jbang
-jbang app install --fresh --force quarkus@quarkusio
-
-## creat project
-quarkus create app org.carl:code-quarkus\
-    --no-code \
-    --gradle
-```
-
-### Refer to the website
-
-- [quarkus](https://quarkus.io/)
-
-* [quarkus-cli](https://cn.quarkus.io/guides/cli-tooling)
-
-- [quarkus Github](https://github.com/quarkusio/quarkus)
+| ---    | ---                |
+| ------ | ------------------ |
+| sdkman | manger jdk version |
