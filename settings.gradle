@@ -82,7 +82,7 @@ dependencyResolutionManagement {
             library('consulStork', 'io.smallrye.stork', 'stork-service-discovery-consul').versionRef('quarkus')
             library('consulClient', 'io.smallrye.reactive', 'smallrye-mutiny-vertx-consul-client').versionRef('quarkus')
             library('pulsar', 'io.quarkus', 'quarkus-smallrye-reactive-messaging-pulsar').versionRef('quarkus')
-            library('gRPC', 'io.quarkus', 'quarkus-grpc').versionRef('quarkus')
+            library('grpc', 'io.quarkus', 'quarkus-grpc').versionRef('quarkus')
 
             // NOTE:testcontainers
             library('testcontainers', 'org.testcontainers', 'testcontainers').versionRef('testcontainers')
@@ -114,7 +114,7 @@ dependencyResolutionManagement {
             // TODO:consul ---> kubernetes
             // bundle('base', ['quarkusJdbcPostgreSQL', 'quarkusReactivePgClient', 'agroal', 'vertx', 'vertxClient', 'mongodb', 'redis', 'jooq', 'jooqMeta', 'jooqCodegen', 'slf4jJbossLogmanager', 'consulStork', 'consulClient', 'gRPC'])
 
-            bundle('base', ['quarkusJdbcPostgreSQL', 'quarkusReactivePgClient', 'vertx', 'vertxClient', 'cache', 'jooq', 'jooqMeta', 'jooqCodegen', 'slf4jJbossLogmanager', 'gRPC', 'commons'])
+            bundle('base', ['quarkusJdbcPostgreSQL', 'quarkusReactivePgClient', 'vertx', 'vertxClient', 'cache', 'jooq', 'jooqMeta', 'jooqCodegen', 'slf4jJbossLogmanager', 'grpc', 'commons'])
 
             bundle('allJdbc', ['quarkusJdbcMariadb', 'quarkusJdbcMySQL', 'quarkusJdbcPostgreSQL'])
             bundle('allDBReactiveClient', ['quarkusReactivePgClient', 'quarkusReactiveMysqlClient'])

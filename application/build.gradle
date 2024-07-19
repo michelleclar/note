@@ -18,6 +18,7 @@ dependencies {
     implementation libs.rest.client
     implementation libs.smtp
     implementation libs.valid
+    implementation libs.grpc
 }
 
 def mySrcDir = 'src/main/java'
@@ -36,6 +37,10 @@ idea {
         sourceDirs.addAll(file(generatedDir))
         sourceDirs.addAll(file(mySrcDir))
     }
+}
+
+quarkus {
+    quarkusBuildProperties.put("quarkus.grpc.codegen.proto-directory", "../protos")
 }
 
 test {
