@@ -138,7 +138,7 @@ public class UserService implements IUserService {
     public Uni<JwtUtils.JwtPojo> refreshToken(String refreshToken, String accessToken) {
         return CacheUtils.getV(userInfoCache, refreshToken, User.class).onItem()
                 .transform(Unchecked.function(item -> {
-                    if (accessToken != null)
+                    if (!accessToken.isEmpty())
                         return JwtUtils.convexAccentToken(jwtParser, accessToken, refreshToken);
 
                     if (item != null && JwtUtils.verifyToken(jwtParser,
