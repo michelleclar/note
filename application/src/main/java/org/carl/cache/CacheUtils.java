@@ -6,11 +6,10 @@ import io.smallrye.mutiny.Uni;
 import io.smallrye.mutiny.unchecked.Unchecked;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import org.carl.user.UserService;
 import org.jboss.logging.Logger;
 
 public class CacheUtils {
-  private static final Logger log = Logger.getLogger(UserService.class);
+  private static final Logger log = Logger.getLogger(CacheUtils.class);
 
   public static <T> Uni<T> getV(Cache cache, String key, Class<T> type) {
     return Uni.createFrom().item(key).onItem().transform(Unchecked.function(item -> {
