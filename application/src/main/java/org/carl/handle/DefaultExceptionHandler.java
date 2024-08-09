@@ -1,4 +1,4 @@
-package org.carl.config;
+package org.carl.handle;
 
 import io.quarkus.security.UnauthorizedException;
 import jakarta.ws.rs.Produces;
