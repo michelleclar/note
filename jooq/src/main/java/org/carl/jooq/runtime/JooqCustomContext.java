@@ -1,6 +1,5 @@
 package org.carl.jooq.runtime;
 
-import io.quarkiverse.jooq.sql.SqlLoggerListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

@@ -6,6 +6,7 @@ plugins {
 dependencies {
     implementation libs.jooq
     implementation libs.quarkusJdbcPostgreSQL
+    implementation libs.agroal
     implementation libs.bundles.jooqGen
 }
 
