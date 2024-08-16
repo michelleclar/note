@@ -115,11 +115,11 @@ public class UserService implements IUserService {
         }));
     }
 
-    public Uni<JwtUtils.JwtPojo> isAuth(String cookieCode) {
+    public Uni<JwtUtils.JwtPojo> toAuth(String cookieCode) {
         return CacheUtils.getV(userInfoCache, cookieCode, User.class).onItem()
             .transform(Unchecked.function(userinfo -> {
                 if (userinfo == null) {
-                    log.errorf("serverError,code:{}", cookieCode);
+                    log.errorf("serverError,code: %s", cookieCode);
                     throw new ServerErrorException("serverError", 500);
                 }
                 String accentToken = JwtUtils.generateAccentToken(userinfo);

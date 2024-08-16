@@ -87,8 +87,11 @@ public class AuthService {
                 .put(Fields.CODE, o.getCode()).put(Fields.UUID, o.getUUID());
             // TODO insert user info to db
             bus.request(ListenFields.USER_REGISTER, userInfoJson).subscribe()
-                .with(message -> log.infof("⛵ User registration successful. userId:%s",
-                    message.body()));
+                .with(message -> {
+                    log.infof("⛵ User registration successful,User registration by Github. userId:%s",
+                        message.body());
+                });
+
             return o.getUUID();
         } catch (Exception e) {
             log.errorf("⛵⛵⛵ User registration error: %s,code %s", e.getMessage(), code, e);

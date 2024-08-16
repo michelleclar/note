@@ -37,11 +37,10 @@ public class UserResource {
     JsonWebToken jwt;
 
     @GET
-    @Path("isAuth")
+    @Path("toAuth")
     @PermitAll
-    public Uni<Response> isAuth(@Context HttpServerRequest request) {
-
-        return userService.isAuth(request.getCookie(Fields.CODE).getValue()).onItem()
+    public Uni<Response> toAuth(@Context HttpServerRequest request) {
+        return userService.toAuth(request.getCookie(Fields.CODE).getValue()).onItem()
             .transform(item -> item == null ? Response.status(Status.UNAUTHORIZED).build()
                 : Response.ok().entity(item).build());
     }
