@@ -2,10 +2,7 @@ package org.carl.user.model;
 
 import io.vertx.core.json.JsonObject;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import org.carl.commons.Fields;
 import org.carl.generated.tables.pojos.OauthProviders;
 import org.carl.generated.tables.pojos.UserInfo;
