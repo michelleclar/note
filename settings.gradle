@@ -20,7 +20,7 @@ dependencyResolutionManagement {
         libs {
             // versions
             version('quarkus', '3.11.3')
-            version('jooq', '3.18.7')
+            version('jooq', '3.19.10')
             version('jooqQuarkiverse', '2.0.1')
             version('slf4j-jboss-logmanager', '2.0.1.Final')
             version('testcontainers', '1.19.6')
@@ -70,10 +70,10 @@ dependencyResolutionManagement {
             library("rest-client-jackson", "io.quarkus", "quarkus-rest-client-jackson").versionRef('quarkus')
             library("rest-client", "io.quarkus", "quarkus-rest-client-jackson").versionRef('quarkus')
             library("guava", "com.google.guava", "guava").versionRef('guava')
-
+            library("opentelemetry","io.quarkus","quarkus-opentelemetry").versionRef('quarkus')
             // NOTE:jooq
-//            library('jooq', 'org.jooq', 'jooq').versionRef('jooq')
-            library('jooq', 'io.quarkiverse.jooq', 'quarkus-jooq').versionRef('jooqQuarkiverse')
+            library('jooq', 'org.jooq', 'jooq').versionRef('jooq')
+//            library('jooq', 'io.quarkiverse.jooq', 'quarkus-jooq').versionRef('jooqQuarkiverse')
             library('jooqMeta', 'org.jooq', 'jooq-meta').versionRef('jooq')
             library('jooqCodegen', 'org.jooq', 'jooq-codegen').versionRef('jooq')
 
