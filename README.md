@@ -9,8 +9,8 @@
 ## Future Plans
 
 - [ ] Integrate vector database for article text similarity search
-- [ ] Integrate AI for article continuation
-- [ ] Integrate AI for article recommendations
+- [x] Integrate AI for article continuation
+- [x] Integrate AI for article recommendations
 
 ## About Me
 
