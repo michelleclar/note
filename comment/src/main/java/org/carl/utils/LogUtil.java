@@ -29,47 +29,53 @@ public class LogUtil {
         StringBuilder sb = new StringBuilder();
         Class<?> clazz = bean.getClass();
         sb.append("{");
-        while (clazz != null && clazz != Object.class) {
-            Field[] fields = clazz.getDeclaredFields();
+        try {
+            while (clazz != null && clazz != Object.class) {
+                Field[] fields = clazz.getDeclaredFields();
 
-            for (Field field : fields) {
-                try {
-                    field.setAccessible(true);
-                } catch (InaccessibleObjectException e) {
-                    System.out.println(e.getMessage());
-                    continue;
+                for (Field field : fields) {
+                    try {
+                        field.setAccessible(true);
+                    } catch (InaccessibleObjectException e) {
+                        System.out.println(e.getMessage());
+                        continue;
+                    }
+
+                    Object value = null;
+                    try {
+                        value = field.get(bean);
+                    } catch (IllegalAccessException e) {
+                        //Irreversible error so Ignore
+                        continue;
+                    }
+                    if (value == null) {
+                        continue;
+                    }
+                    if (value instanceof Integer || value instanceof Float
+                        || value instanceof Boolean) {
+                        sb.append("\"").append(field.getName()).append("\"").append(": ")
+                            .append(value)
+                            .append(",");
+                    } else if (value instanceof String) {
+                        sb.append("\"").append(field.getName()).append("\"").append(": ")
+                            .append("\"")
+                            .append(value).append("\"").append(",");
+                    } else if (value instanceof Object[]) {
+                        //FIX: module base is
+                        sb.append("\"").append(field.getName()).append("\"").append(": ")
+                            .append(beanToString((Object[]) value)).append(",");
+                    } else {
+                        sb.append("\"").append(field.getName()).append("\"").append(": ")
+                            .append(value).append(",");
+                        // sb.append("\"").append(field.getName()).append("\"").append(": ")
+                        //     .append(beanToString(value)).append(",");
+                    }
                 }
 
-                Object value = null;
-                try {
-                    value = field.get(bean);
-                } catch (IllegalAccessException e) {
-                    //Irreversible error so Ignore
-                    continue;
-                }
-                if (value == null) {
-                    continue;
-                }
-                if (value instanceof Integer || value instanceof Float
-                    || value instanceof Boolean) {
-                    sb.append("\"").append(field.getName()).append("\"").append(": ").append(value)
-                        .append(",");
-                } else if (value instanceof String) {
-                    sb.append("\"").append(field.getName()).append("\"").append(": ").append("\"")
-                        .append(value).append("\"").append(",");
-                } else if (value instanceof Object[]) {
-                    //FIX: module base is
-                    sb.append("\"").append(field.getName()).append("\"").append(": ")
-                        .append(value.toString()).append(",");
-                } else {
-                    sb.append("\"").append(field.getName()).append("\"").append(": ")
-                        .append(value).append(",");
-                    // sb.append("\"").append(field.getName()).append("\"").append(": ")
-                    //     .append(beanToString(value)).append(",");
-                }
+                clazz = clazz.getSuperclass();
             }
-
-            clazz = clazz.getSuperclass();
+        } catch (Exception e) {
+            sb.append(" ");
         }
         sb.delete(sb.length() - 2, sb.length());
         sb.append("}");
