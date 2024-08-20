@@ -1,6 +1,6 @@
 package org.carl.auth;
 
-import static org.carl.generated.tables.OauthProviders.OAUTH_PROVIDERS;
+
 
 import io.quarkus.cache.Cache;
 import io.quarkus.cache.CacheName;
@@ -30,6 +30,9 @@ import org.carl.listen.ListenFields;
 import org.carl.user.UserService;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
+
+import static org.carl.generated.Tables.OAUTH_PROVIDERS;
+
 
 @Singleton
 public class AuthService {

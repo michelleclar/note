@@ -1,12 +1,11 @@
 plugins {
     id 'java'
-    id 'idea'
     id 'io.quarkus'
-    id("org.jooq.jooq-codegen-gradle") version "3.19.10"
 }
 dependencies {
     implementation project(':jooq')
     implementation project(':smtp')
+    implementation project(':comment')
     implementation enforcedPlatform(libs.quarkusPlaform)
     implementation libs.jooq
     implementation libs.bundles.quarkus
@@ -22,25 +21,6 @@ dependencies {
     implementation libs.grpc
     implementation libs.opentelemetry
     implementation 'io.quarkiverse.langchain4j:quarkus-langchain4j-ollama:0.17.0'
-    jooqCodegen 'org.postgresql:postgresql:42.7.3'
-}
-
-def mySrcDir = 'src/main/java'
-def generatedDir = 'src/main/generated'
-sourceSets {
-    main {
-        java {
-            srcDir generatedDir
-            srcDir mySrcDir
-        }
-    }
-}
-idea {
-    module {
-        generatedSourceDirs.addAll(file(generatedDir))
-        sourceDirs.addAll(file(generatedDir))
-        sourceDirs.addAll(file(mySrcDir))
-    }
 }
 
 quarkus {
@@ -49,36 +29,4 @@ quarkus {
 
 test {
     systemProperty 'java.util.logging.manager', 'org.jboss.logmanager.LogManager'
-}
-
-jooq {
-    configuration {
-        jdbc {
-            url = "jdbc:postgresql://localhost:5432/db"
-            driver = "org.postgresql.Driver"
-            user = "root"
-            password = "root"
-        }
-        generator {
-
-//            name = "org.jooq.meta.mysql.MySQLDatabase"
-
-            // Optional: The jooq-meta configuration, configuring the information schema source.
-            database {
-                inputSchema = 'public'
-            }
-
-            // Optional: The jooq-codegen configuration, configuring the generated output content.
-            generate {
-                pojos = true
-                daos = true
-            }
-
-            // Optional: The generation output target
-            target {
-                packageName = "org.carl.generated"
-                directory = "src/main/generated"
-            }
-        }
-    }
 }
