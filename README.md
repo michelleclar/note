@@ -11,6 +11,7 @@
 > Need JDK 21
 > Modify db config
 > For sensitive configurations, you can create a .env file in the project directory. Refer to this link for configuration details: https://quarkus.io/guides/config.
+> Currently AI has only integrated ollama. If you want to use ollama, you need have ollama service (Arch Linux Run command: yay -S ollama)
 
 ```
 -- Currently required configurations for development.
