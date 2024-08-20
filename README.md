@@ -11,6 +11,8 @@
 - [ ] Integrate vector database for article text similarity search
 - [x] Integrate AI for article continuation
 - [x] Integrate AI for article recommendations
+- [ ] Integrate AI for online
+- [ ] Subsequent plan is to add the concept of 'Workspace', as a local tool for improving development efficiency.
 
 ## About Me
 
