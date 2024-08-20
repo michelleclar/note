@@ -1,0 +1,67 @@
+plugins {
+    id 'idea'
+    id("org.jooq.jooq-codegen-gradle") version "3.19.10"
+}
+
+dependencies {
+    implementation libs.jooq
+    jooqCodegen 'org.postgresql:postgresql:42.7.3'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+def mySrcDir = 'src/main/java'
+def generatedDir = 'src/main/generated'
+sourceSets {
+    main {
+        java {
+            srcDir generatedDir
+            srcDir mySrcDir
+        }
+    }
+}
+idea {
+    module {
+        generatedSourceDirs.addAll(file(generatedDir))
+        sourceDirs.addAll(file(generatedDir))
+        sourceDirs.addAll(file(mySrcDir))
+    }
+}
+
+
+test {
+    systemProperty 'java.util.logging.manager', 'org.jboss.logmanager.LogManager'
+}
+
+jooq {
+    configuration {
+        jdbc {
+            url = "jdbc:postgresql://localhost:5432/db"
+            driver = "org.postgresql.Driver"
+            user = "root"
+            password = "root"
+        }
+        generator {
+
+            // Optional: The jooq-meta configuration, configuring the information schema source.
+            database {
+                inputSchema = 'public'
+            }
+
+            // Optional: The jooq-codegen configuration, configuring the generated output content.
+            generate {
+                pojos = true
+                daos = true
+            }
+
+            // Optional: The generation output target
+            target {
+                packageName = "org.carl.generated"
+                directory = "src/main/generated"
+            }
+        }
+    }
+}
