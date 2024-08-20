@@ -9,7 +9,7 @@ public class OllamaChatRequestPojo {
     List<OllamaMessage> messages;
     List<OllamaTool> tools;
     String format;
-    List<OllamaOption> options;
+    List<OllamaOptions> options;
     String stream;
     @JsonAlias({"keep_alive", "keepAlive"})
     @JsonProperty("keep_alive")

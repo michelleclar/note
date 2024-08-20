@@ -2,8 +2,6 @@ package org.carl.langChain.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import io.quarkiverse.langchain4j.ollama.runtime.jackson.ToolTypeDeserializer;
-import io.quarkiverse.langchain4j.ollama.runtime.jackson.ToolTypeSerializer;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -36,9 +34,6 @@ public record OllamaTool(Type type, Function function) {
     )
     public static enum Type {
         FUNCTION;
-
-        private Type() {
-        }
     }
 
     public static record Function(String name, String description, Parameters parameters) {

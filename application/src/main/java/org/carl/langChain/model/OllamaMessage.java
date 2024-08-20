@@ -1,22 +1,23 @@
 package org.carl.langChain.model;
 
-import io.quarkiverse.langchain4j.ollama.Role;
-import io.quarkiverse.langchain4j.ollama.ToolCall;
+
 import java.util.List;
 
-public record OllamaMessage(Role role, String content, List<ToolCall> toolCalls, List<String> images) {
-    public OllamaMessage(Role role, String content, List<ToolCall> toolCalls, List<String> images) {
+public record OllamaMessage(OllamaRole role, String content, List<OllamaToolCall> toolCalls,
+                            List<String> images) {
+    public OllamaMessage(OllamaRole role, String content, List<OllamaToolCall> toolCalls,
+        List<String> images) {
         this.role = role;
         this.content = content;
         this.toolCalls = toolCalls;
         this.images = images;
     }
 
-    public static io.quarkiverse.langchain4j.ollama.Message.Builder builder() {
-        return new io.quarkiverse.langchain4j.ollama.Message.Builder();
+    public static Builder builder() {
+        return new Builder();
     }
 
-    public Role role() {
+    public OllamaRole role() {
         return this.role;
     }
 
@@ -24,7 +25,7 @@ public record OllamaMessage(Role role, String content, List<ToolCall> toolCalls,
         return this.content;
     }
 
-    public List<ToolCall> toolCalls() {
+    public List<OllamaToolCall> toolCalls() {
         return this.toolCalls;
     }
 
@@ -33,15 +34,15 @@ public record OllamaMessage(Role role, String content, List<ToolCall> toolCalls,
     }
 
     public static class Builder {
-        private Role role;
+        private OllamaRole role;
         private String content;
-        private List<ToolCall> toolCalls;
+        private List<OllamaToolCall> toolCalls;
         private List<String> images;
 
         public Builder() {
         }
 
-        public Builder role(Role role) {
+        public Builder role(OllamaRole role) {
             this.role = role;
             return this;
         }
@@ -51,7 +52,7 @@ public record OllamaMessage(Role role, String content, List<ToolCall> toolCalls,
             return this;
         }
 
-        public Builder toolCalls(List<ToolCall> toolCalls) {
+        public Builder toolCalls(List<OllamaToolCall> toolCalls) {
             this.toolCalls = toolCalls;
             return this;
         }

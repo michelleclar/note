@@ -2,8 +2,8 @@ package org.carl.langChain.model;
 
 import java.util.List;
 
-public record OllamaOption(Double temperature, Integer topK, Double topP, Double repeatPenalty, Integer seed, Integer numPredict, Integer numCtx, List<String> stop) {
-    public OllamaOption(Double temperature, Integer topK, Double topP, Double repeatPenalty, Integer seed, Integer numPredict, Integer numCtx, List<String> stop) {
+public record OllamaOptions(Double temperature, Integer topK, Double topP, Double repeatPenalty, Integer seed, Integer numPredict, Integer numCtx, List<String> stop) {
+    public OllamaOptions(Double temperature, Integer topK, Double topP, Double repeatPenalty, Integer seed, Integer numPredict, Integer numCtx, List<String> stop) {
         this.temperature = temperature;
         this.topK = topK;
         this.topP = topP;
@@ -103,8 +103,8 @@ public record OllamaOption(Double temperature, Integer topK, Double topP, Double
             return this;
         }
 
-        public io.quarkiverse.langchain4j.ollama.Options build() {
-            return new io.quarkiverse.langchain4j.ollama.Options(this.temperature, this.topK, this.topP, this.repeatPenalty, this.seed, this.numPredict, this.numCtx, this.stop);
+        public OllamaOptions build() {
+            return new OllamaOptions(this.temperature, this.topK, this.topP, this.repeatPenalty, this.seed, this.numPredict, this.numCtx, this.stop);
         }
     }
 }
