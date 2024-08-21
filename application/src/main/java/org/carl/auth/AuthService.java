@@ -1,7 +1,5 @@
 package org.carl.auth;
 
-
-
 import io.quarkus.cache.Cache;
 import io.quarkus.cache.CacheName;
 import io.quarkus.runtime.StartupEvent;
@@ -25,7 +23,7 @@ import org.carl.cache.CacheFields;
 import org.carl.commons.Fields;
 import org.carl.generated.tables.pojos.OauthProviders;
 import org.carl.generated.tables.records.OauthProvidersRecord;
-import org.carl.jooq.engine.DB;
+import org.carl.engine.DB;
 import org.carl.listen.ListenFields;
 import org.carl.user.UserService;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -51,6 +49,9 @@ public class AuthService {
     @Inject
     @RestClient
     RestClientWithTokenHeaderParam restClient;
+    @Inject
+    DB DB;
+
 
     public String github(HttpServerRequest request, String code) {
         OAuthGitHubPojo o = new OAuthGitHubPojo();
@@ -83,7 +84,8 @@ public class AuthService {
             }
 
             // NOTE: get userInfo
-            // NOTE: Extreme cases are not considered. Currently, the only error scenario is the proxy issue.
+            // NOTE: Extreme cases are not considered. Currently, the only error scenario is the
+            // proxy issue.
             Response userInfo = restClient.getUserInfo(Fields.BEARER + token);
             JsonObject userInfoJson = new JsonObject(userInfo.readEntity(String.class));
             userInfoJson.put(Fields.ACCESS_TOKEN, token).put(Fields.PROVIDER_ID, 1)
@@ -91,7 +93,8 @@ public class AuthService {
             // TODO insert user info to db
             bus.request(ListenFields.USER_REGISTER, userInfoJson).subscribe()
                 .with(message -> {
-                    log.infof("⛵ User registration successful,User registration by Github. userId:%s",
+                    log.infof(
+                        "⛵ User registration successful,User registration by Github. userId:%s",
                         message.body());
                 });
 

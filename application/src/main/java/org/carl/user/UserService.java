@@ -21,7 +21,7 @@ import org.carl.generated.tables.pojos.UserInfo;
 import org.carl.generated.tables.pojos.Users;
 import org.carl.generated.tables.records.UserOauthRecord;
 import org.carl.generated.tables.records.UsersRecord;
-import org.carl.jooq.engine.DB;
+import org.carl.engine.DB;
 import org.carl.listen.ListenFields;
 import org.carl.smtp.SMTPService;
 import org.carl.user.exception.UserRegisterException;
@@ -52,6 +52,8 @@ public class UserService implements IUserService {
     public Cache userInfoCache;
     @Inject
     JWTParser jwtParser;
+    @Inject
+    DB DB;
 
     void onStarted(@Observes StartupEvent startupEvent) {
         initRoles();

@@ -8,11 +8,9 @@ pluginManagement {
         gradlePluginPortal()
         mavenCentral()
         maven { url 'https://repo.spring.io/milestone' }
-        mavenLocal()
     }
     plugins {
         id 'io.quarkus' version '3.11.3'
-        id 'org.kordamp.gradle.jandex' version '1.1.0'
     }
 }
 dependencyResolutionManagement {
@@ -20,7 +18,6 @@ dependencyResolutionManagement {
         libs {
             // versions
             version('quarkus', '3.11.3')
-            version('jooq', '3.19.10')
             version('jooqQuarkiverse', '2.0.1')
             version('slf4j-jboss-logmanager', '2.0.1.Final')
             version('testcontainers', '1.19.6')
@@ -72,10 +69,7 @@ dependencyResolutionManagement {
             library("guava", "com.google.guava", "guava").versionRef('guava')
             library("opentelemetry","io.quarkus","quarkus-opentelemetry").versionRef('quarkus')
             // NOTE:jooq
-            library('jooq', 'org.jooq', 'jooq').versionRef('jooq')
-//            library('jooq', 'io.quarkiverse.jooq', 'quarkus-jooq').versionRef('jooqQuarkiverse')
-            library('jooqMeta', 'org.jooq', 'jooq-meta').versionRef('jooq')
-            library('jooqCodegen', 'org.jooq', 'jooq-codegen').versionRef('jooq')
+            library('jooq', 'io.quarkiverse.jooq', 'quarkus-jooq').versionRef('jooqQuarkiverse')
 
             // NOTE:consul
             library('consul', 'io.quarkiverse.config', 'quarkus-config-consul').versionRef('consul')
@@ -105,16 +99,8 @@ dependencyResolutionManagement {
             // NOTE:bundles
             bundle('quarkus', ['quarkusJackson', 'quarkusArc', 'quarkusJunit5'])
 
-            bundle('jooq', ['jooq', 'jooqMeta', 'jooqCodegen'])
-            bundle('jooqGen', ['jooqMeta', 'jooqCodegen'])
-
             bundle('vertx', ['vertx', 'vertxClient'])
             bundle('postgresql', ['quarkusJdbcPostgreSQL', 'quarkusReactivePgClient'])
-
-            // TODO:consul ---> kubernetes
-            // bundle('base', ['quarkusJdbcPostgreSQL', 'quarkusReactivePgClient', 'agroal', 'vertx', 'vertxClient', 'mongodb', 'redis', 'jooq', 'jooqMeta', 'jooqCodegen', 'slf4jJbossLogmanager', 'consulStork', 'consulClient', 'gRPC'])
-
-            bundle('base', ['quarkusJdbcPostgreSQL', 'quarkusReactivePgClient', 'vertx', 'vertxClient', 'cache', 'jooq', 'jooqMeta', 'jooqCodegen', 'slf4jJbossLogmanager', 'grpc', 'commons'])
 
             bundle('allJdbc', ['quarkusJdbcMariadb', 'quarkusJdbcMySQL', 'quarkusJdbcPostgreSQL'])
             bundle('allDBReactiveClient', ['quarkusReactivePgClient', 'quarkusReactiveMysqlClient'])
@@ -130,7 +116,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = 'note'
-include 'application', 'jooq', 'nlp', 'smtp'
-include 'vector'
-include 'comment'
+include 'application', 'nlp', 'smtp','vector','comment'
 

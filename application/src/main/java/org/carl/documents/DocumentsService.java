@@ -4,13 +4,14 @@ import static org.carl.generated.Tables.DOCUMENTS;
 import static org.carl.generated.Tables.USER_DOCUMENTS;
 
 import io.smallrye.mutiny.Uni;
+import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import org.carl.documents.model.Document;
 import org.carl.generated.tables.records.DocumentsRecord;
-import org.carl.jooq.engine.DB;
+import org.carl.engine.DB;
 import org.jboss.logging.Logger;
 import org.jooq.CommonTableExpression;
 import org.jooq.Condition;
@@ -23,6 +24,8 @@ import org.jooq.tools.StringUtils;
 @Singleton
 public class DocumentsService {
     private final Logger log = Logger.getLogger(DocumentsService.class);
+    @Inject
+    DB DB;
 
     public Uni<Integer> remove(Document doc) {
         return Uni.createFrom()
@@ -363,6 +366,7 @@ public class DocumentsService {
                                 .where(DOCUMENTS.ID.eq(item.getId()))
                                 .fetchOneInto(Document.class)));
     }
+
     public Uni<Integer> updateById(Document doc) {
         return Uni.createFrom()
             .item(doc)

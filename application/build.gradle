@@ -3,8 +3,6 @@ plugins {
     id 'io.quarkus'
 }
 dependencies {
-    implementation project(':jooq')
-    implementation project(':smtp')
     implementation project(':comment')
     implementation enforcedPlatform(libs.quarkusPlaform)
     implementation libs.jooq

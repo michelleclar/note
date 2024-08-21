@@ -1,15 +1,17 @@
-package org.carl.jooq.engine;
+package org.carl.engine;
 
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
-import org.jboss.logging.Logger;
-import org.jooq.*;
-import org.jooq.Record;
-import org.jooq.impl.DSL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import org.jboss.logging.Logger;
+import org.jooq.Configuration;
+import org.jooq.DSLContext;
+import org.jooq.Record;
+import org.jooq.Table;
+import org.jooq.impl.DSL;
 
 /**
  * JOOQ
@@ -22,7 +24,6 @@ public class DB {
 
     @Inject
     DSLContext dsl;
-
 
     public <T> T get(Function<DSLContext, T> queryFunction) {
         return queryFunction.apply(dsl);

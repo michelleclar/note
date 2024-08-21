@@ -1,11 +1,13 @@
 plugins {
     id 'idea'
-    id("org.jooq.jooq-codegen-gradle") version "3.19.10"
+    id 'nu.studer.jooq' version '9.0'
 }
 
 dependencies {
     implementation libs.jooq
-    jooqCodegen 'org.postgresql:postgresql:42.7.3'
+    implementation libs.quarkusJdbcPostgreSQL
+    jooqGenerator 'org.postgresql:postgresql:42.7.3'
+
 }
 
 test {
@@ -35,32 +37,60 @@ idea {
 test {
     systemProperty 'java.util.logging.manager', 'org.jboss.logmanager.LogManager'
 }
+import nu.studer.gradle.jooq.JooqEdition
 
 jooq {
-    configuration {
-        jdbc {
-            url = "jdbc:postgresql://localhost:5432/db"
-            driver = "org.postgresql.Driver"
-            user = "root"
-            password = "root"
-        }
-        generator {
+    version = '3.18.7'
+    edition = JooqEdition.OSS
 
-            // Optional: The jooq-meta configuration, configuring the information schema source.
-            database {
-                inputSchema = 'public'
-            }
-
-            // Optional: The jooq-codegen configuration, configuring the generated output content.
-            generate {
-                pojos = true
-                daos = true
-            }
-
-            // Optional: The generation output target
-            target {
-                packageName = "org.carl.generated"
-                directory = "src/main/generated"
+    configurations {
+        main {
+            generationTool {
+                logging = org.jooq.meta.jaxb.Logging.WARN
+                jdbc {
+                    driver = 'org.postgresql.Driver'
+                    url = 'jdbc:postgresql://localhost:5432/db'
+                    user = 'root'
+                    password = 'root'
+                    properties {
+                        property {
+                            key = 'PAGE_SIZE'
+                            value = 2048
+                        }
+                    }
+                }
+                generator {
+                    name = 'org.jooq.codegen.DefaultGenerator'
+                    database {
+//                        name = 'org.jooq.meta.h2.H2Database'
+                        inputSchema = 'public'
+//                        forcedTypes {
+//                            forcedType {
+//                                name = 'varchar'
+//                                includeExpression = '.*'
+//                                includeTypes = 'JSONB?'
+//                            }
+//                            forcedType {
+//                                name = 'varchar'
+//                                includeExpression = '.*'
+//                                includeTypes = 'INET'
+//                            }
+//                        }
+                    }
+                    generate {
+                        deprecated = false
+                        records = false
+                        immutablePojos = false
+                        fluentSetters = false
+                        pojos = true
+                        daos = true
+                    }
+                    target {
+                        packageName = 'org.carl.generated'
+                        directory = 'src/main/generated'
+                    }
+                    strategy.name = "org.jooq.codegen.DefaultGeneratorStrategy"
+                }
             }
         }
     }
