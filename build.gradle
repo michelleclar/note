@@ -23,7 +23,5 @@ subprojects {
         options.encoding = 'UTF-8'
     }
     javadoc.options.encoding = 'UTF-8'
-    dependencies {
-        testImplementation libs.quarkusJunit5
-    }
+    
 }
